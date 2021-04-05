@@ -40,25 +40,33 @@ const validateUser = (req, res, next) => {
     console.log(pw)
     user.find({username: un, password: pw})
     .then(response => {
-        res.json({
-            response
-        })
+        console.log(response[0].username)
+        if((un == response[0].username)&&(pw == response[0].password)){
+            res.json({
+                validity: "true"
+            })
+        }
+        else{
+            res.json({
+                validity: "false"
+            })
+        }
     })
     .catch(error => {
         res.json({
-            message: 'an error occured'
+            message: 'false'
         })
     })
 }
 
 
-const store = (res, req, next) => {
-    console.log(res.body.username)
+const store = (req, res, next) => {
+    console.log(req.body.username)
     let newUser = new user({
-        username: res.body.username,
-        email: res.body.email,
-        password: res.body.password,
-        phone: res.body.phone,      
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password,
+        phone: req.body.phone,      
     })
 
     newUser.save()
