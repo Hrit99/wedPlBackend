@@ -33,6 +33,24 @@ const show = (req, res, next) => {
     })
 }
 
+const validateUser = (req, res, next) => {
+    let un = req.body.username
+    let pw = req.body.password
+    console.log(un)
+    console.log(pw)
+    user.find({username: un, password: pw})
+    .then(response => {
+        res.json({
+            response
+        })
+    })
+    .catch(error => {
+        res.json({
+            message: 'an error occured'
+        })
+    })
+}
+
 
 const store = (res, req, next) => {
     console.log(res.body.username)
