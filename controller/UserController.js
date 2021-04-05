@@ -43,12 +43,12 @@ const validateUser = (req, res, next) => {
         console.log(response[0].username)
         if((un == response[0].username)&&(pw == response[0].password)){
             res.json({
-                validity: "true"
+                validity: true
             })
         }
         else{
             res.json({
-                validity: "false"
+                validity: false
             })
         }
     })
