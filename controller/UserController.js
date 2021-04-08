@@ -72,12 +72,12 @@ const store = (req, res, next) => {
     newUser.save()
     .then( response => {
         res.json({
-            message: 'user added succesfully'
+            stored: true
         })
     })
     .catch(error => {
         res.json({
-            message: 'an error occured'
+            stored: false
         })
     })
 }
