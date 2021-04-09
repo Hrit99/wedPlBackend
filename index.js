@@ -3,6 +3,8 @@ const mongoose = require('mongoose')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const userRoute = require('./routes/UserRoute')
+const categoryRoute = require('./routes/CategoryRotes')
+const itemsRoute = require('./routes/itemsManageRoute').router
 
 mongoose.connect('mongodb+srv://hritik:hritikpassword@cluster0.ibo9z.mongodb.net/users?retryWrites=true&w=majority', {useNewUrlParser:true, useUnifiedTopology:true})
 
@@ -31,7 +33,8 @@ app.listen(port, () => {
 
 
 app.use('/api/user', userRoute)
-
+app.use('/api/category', categoryRoute)
+app.use('/api/item', itemsRoute)
 
 
 
