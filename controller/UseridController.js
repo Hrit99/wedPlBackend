@@ -2,7 +2,7 @@
 const userid = require('../model/UserId')
 const user = require('../model/User')
 
-const loadUserIds = (req, res, next) => {
+const loadUserIds = () => {
     userid.deleteMany({}).then(() => {
         
         user.find()
@@ -21,22 +21,16 @@ const loadUserIds = (req, res, next) => {
                     }
                 )
             });
-            res.json({
-                load: true
-            })
+            return true
         })
         .catch(error => {
             console.log("12")
-            res.json({
-                load: false
-            })
+            return false
         })
 
     }).catch((_) => {
         console.log("13")
-        res.json({
-            load: false
-        })
+        return false
     })
     
 }

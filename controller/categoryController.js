@@ -50,7 +50,8 @@ const storeCategory = (req, res, next) => {
 
     newCategory.save()
     .then( response => {
-        reloadc.loadUserIds
+        console.log("go")
+        reloadc.loadUserIds()
         res.json({
             stored: true
         })
@@ -72,7 +73,7 @@ const updateCategory = (req, res, next)=> {
 
     category.findByIdAndUpdate(categoryId, {$set: updatedData})
     .then(() => {
-        reloadc.loadUserIds
+        reloadc.loadUserIds()
         res.json({
             updated: true
         })
@@ -89,7 +90,8 @@ const destroyCategory = (req, res, next) => {
 
     category.findByIdAndRemove(categoryId)
     .then(() => {
-        reloadc.loadUserIds
+        console.log("no")
+        reloadc.loadUserIds()
         res.json({
             deleted: true
         })

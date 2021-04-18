@@ -33,7 +33,7 @@ function storeItem(item,res,name, mediaUrl, details){
     newItem.save()
     .then(
         response => {
-            reloadc.loadUserIds
+            reloadc.loadUserIds()
             res.json({
             stored: true
             })
@@ -60,7 +60,7 @@ function updateItem(item, res, _id, name, mediaUrl, details){
 
     item.findByIdAndUpdate(itemId, {$set: updatedData})
     .then(() => {
-        reloadc.loadUserIds
+        reloadc.loadUserIds()
         res.json({
             updated: true
         })
@@ -77,7 +77,7 @@ function destroyItem(item, res, _id){
     console.log(itemId)
     item.findByIdAndRemove(itemId)
     .then(() => {
-        reloadc.loadUserIds
+        reloadc.loadUserIds()
         res.json({
             deleted: true
         })
