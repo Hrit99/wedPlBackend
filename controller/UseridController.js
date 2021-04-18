@@ -2,8 +2,9 @@
 const userid = require('../model/UserId')
 const user = require('../model/User')
 
-const loadUserIds = () => {
-    userid.deleteMany(true).then(() => {
+const loadUserIds = (req, res, next) => {
+    userid.deleteMany({}).then(() => {
+        
         user.find()
         .then(response => {
             console.log(response)
@@ -13,26 +14,26 @@ const loadUserIds = () => {
                 });
                 newUserid.save().then( () => {
                     console.log("saved" + element['_id'])
-                    res.json({
-                        load: true
-                    })
                 }
                 ).catch(
                     error => {
-                        res.json({
-                            load: false
-                        })
+                        console.log("1")
                     }
                 )
             });
+            res.json({
+                load: true
+            })
         })
         .catch(error => {
+            console.log("12")
             res.json({
                 load: false
             })
         })
 
     }).catch((_) => {
+        console.log("13")
         res.json({
             load: false
         })
