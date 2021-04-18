@@ -10,5 +10,4 @@ router.post('/update', userController.update)
 router.post('/delete', userController.destroy)
 router.post('/validate', userController.validateUser)
 
-
 module.exports = router
