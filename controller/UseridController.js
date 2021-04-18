@@ -3,7 +3,8 @@ const userid = require('../model/UserId')
 const user = require('../model/User')
 
 const loadUserIds = () => {
-    user.find()
+    userid.deleteMany(true).then(() => {
+        user.find()
         .then(response => {
             console.log(response)
             response.forEach(element => {
@@ -12,17 +13,31 @@ const loadUserIds = () => {
                 });
                 newUserid.save().then( () => {
                     console.log("saved" + element['_id'])
+                    res.json({
+                        load: true
+                    })
                 }
                 ).catch(
                     error => {
-                        console.log(" not saved")
+                        res.json({
+                            load: false
+                        })
                     }
                 )
             });
         })
         .catch(error => {
-            console.log("an error occured");
+            res.json({
+                load: false
+            })
         })
+
+    }).catch((_) => {
+        res.json({
+            load: false
+        })
+    })
+    
 }
 
 const reloadCheck = (req, res, next) => {
