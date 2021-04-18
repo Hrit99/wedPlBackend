@@ -10,10 +10,10 @@ const loadUserIds = () => {
             console.log(response)
             response.forEach(element => {
                 let newUserid = new userid({
-                    userId: element['_id']
+                    userId: element['username']
                 });
                 newUserid.save().then( () => {
-                    console.log("saved" + element['_id'])
+                    console.log("saved" + element['username'])
                 }
                 ).catch(
                     error => {
