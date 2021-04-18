@@ -1,4 +1,6 @@
 const category = require('../model/Categories')
+const reloadc = require('./UseridController')
+
 
 const getCategories = (req, res, next) => {
     
@@ -48,6 +50,7 @@ const storeCategory = (req, res, next) => {
 
     newCategory.save()
     .then( response => {
+        reloadc.loadUserIds
         res.json({
             stored: true
         })
@@ -69,6 +72,7 @@ const updateCategory = (req, res, next)=> {
 
     category.findByIdAndUpdate(categoryId, {$set: updatedData})
     .then(() => {
+        reloadc.loadUserIds
         res.json({
             updated: true
         })
@@ -85,6 +89,7 @@ const destroyCategory = (req, res, next) => {
 
     category.findByIdAndRemove(categoryId)
     .then(() => {
+        reloadc.loadUserIds
         res.json({
             deleted: true
         })

@@ -1,7 +1,6 @@
 const user = require('../model/User')
 var qs = require('querystring');
 const { listenerCount } = require('cluster');
-const reloadc = require('./UseridController')
 
 const index = (req, res, next) => {
 
@@ -73,7 +72,6 @@ const store = (req, res, next) => {
 
     newUser.save()
         .then(response => {
-            reloadc.loadUserIds
             res.json({
                 stored: true
             })
@@ -98,7 +96,6 @@ const update = (req, res, next) => {
 
     user.findByIdAndUpdate(userId, { $set: updatedData })
         .then(() => {
-            reloadc.loadUserIds
             res.json({
                 message: 'user updated succesfully'
             })
@@ -115,7 +112,6 @@ const destroy = (req, res, next) => {
 
     user.findByIdAndRemove(userId)
         .then(() => {
-            reloadc.loadUserIds
             res.json({
                 message: 'user deleted succesfully'
             })
