@@ -38,7 +38,7 @@ app.use('/api/user', userRoute)
 app.use('/api/category', categoryRoute)
 app.use('/api/item', itemsRoute)
 app.use('/api/userid', useridRoute)
-app.use('api/admin', adminRoute)
+app.use('/api/admin', adminRoute)
 
 
 

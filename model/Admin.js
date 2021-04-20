@@ -14,7 +14,7 @@ const adminSchema = new schema({
     phone: {
         type: String
     }, 
-}, {timestamps:true})
+}, {timestamps:true, collection: 'admin'})
 
 
 const admin = mongoose.model('admin', adminSchema)

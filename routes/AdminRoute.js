@@ -1,9 +1,13 @@
 const express = require('express')
 const router = express.Router()
 
-const userController = require('../controller/AdminController')
+const adminController = require('../controller/AdminController')
 
-router.get('/', userController.index)
-router.post('/validate', userController.validateAdmin)
+router.get('/', adminController.index)
+router.post('/validate', adminController.validateAdmin)
+router.post('/show', adminController.show)
+router.post('/store', adminController.store)
+router.post('/update', adminController.update)
+router.post('/delete', adminController.destroy)
 
 module.exports = router
