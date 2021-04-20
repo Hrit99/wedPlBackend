@@ -6,6 +6,7 @@ const userRoute = require('./routes/UserRoute')
 const categoryRoute = require('./routes/CategoryRotes')
 const itemsRoute = require('./routes/itemsManageRoute').router
 const useridRoute = require('./routes/UseridRoutes')
+const adminRoute = require('./routes/AdminRoute')
 
 mongoose.connect('mongodb+srv://hritik:hritikpassword@cluster0.ibo9z.mongodb.net/users?retryWrites=true&w=majority', {useNewUrlParser:true, useUnifiedTopology:true})
 
@@ -37,6 +38,7 @@ app.use('/api/user', userRoute)
 app.use('/api/category', categoryRoute)
 app.use('/api/item', itemsRoute)
 app.use('/api/userid', useridRoute)
+app.use('api/admin', adminRoute)
 
 
 
