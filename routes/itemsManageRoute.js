@@ -27,7 +27,7 @@ router.post('/storeItem', (req, res) => {
 
 router.post('/updateItem', (req, res) => {
   res.json({
-    link: "somethin"
+    link: req.body.path
   })
     imgur
     .uploadFile(req.body.path)
