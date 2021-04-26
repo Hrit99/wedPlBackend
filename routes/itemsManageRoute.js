@@ -26,9 +26,6 @@ router.post('/storeItem', (req, res) => {
 })
 
 router.post('/updateItem', (req, res) => {
-  res.json({
-    link: req.body.path
-  })
     imgur
     .uploadFile(req.body.path)
     .then((json) => {
@@ -37,9 +34,10 @@ router.post('/updateItem', (req, res) => {
       // res.json({
       //   link: json.link
       // })
-    })
-    .catch((err) => {
-      console.error(err.message);
+    }).catch((err) => {
+      res.json({
+        link: err
+      })
     });
    
 })
