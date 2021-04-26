@@ -36,7 +36,7 @@ router.post('/updateItem', (req, res) => {
       // })
     }).catch((err) => {
       res.json({
-        link: err
+        link: err.message
       })
     });
    
