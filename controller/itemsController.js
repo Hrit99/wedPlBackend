@@ -62,12 +62,12 @@ function updateItem(item, res, _id, name, mediaUrl, details){
     .then(() => {
         reloadc.loadUserIds()
         res.json({
-            updated: true
+            link: mediaUrl
         })
     })
     .catch(error => {
         res.json({
-            updated: false
+            link: mediaUrl
         })
     })
 }
