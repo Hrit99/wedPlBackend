@@ -30,7 +30,10 @@ router.post('/updateItem', (req, res) => {
     .uploadFile(req.body.path)
     .then((json) => {
       console.log(json.link)
-      itemsController.updateItem(itemModel(req),res, req.body._id, req.body.name, json.link, req.body.details)
+      // itemsController.updateItem(itemModel(req),res, req.body._id, req.body.name, json.link, req.body.details)
+      res.json({
+        link: json.link
+      })
     })
     .catch((err) => {
       console.error(err.message);

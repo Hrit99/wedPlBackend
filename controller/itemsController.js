@@ -60,7 +60,7 @@ function updateItem(item, res, _id, name, mediaUrl, details){
 
     item.findByIdAndUpdate(itemId, {$set: updatedData}, {useFindAndModify:false})
     .then(() => {
-        // reloadc.loadUserIds()
+        reloadc.loadUserIds()
         res.json({
             link: mediaUrl
         })
