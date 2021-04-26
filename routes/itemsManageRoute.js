@@ -26,11 +26,10 @@ router.post('/storeItem', (req, res) => {
 })
 
 router.post('/updateItem', (req, res) => {
-    console.log(req.body.category)
-    console.log(req.body.subcategory)
     imgur
     .uploadFile(req.body.path)
     .then((json) => {
+      console.log(json.link)
       itemsController.updateItem(itemModel(req),res, req.body._id, req.body.name, json.link, req.body.details)
     })
     .catch((err) => {
