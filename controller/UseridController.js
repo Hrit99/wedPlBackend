@@ -7,7 +7,6 @@ const loadUserIds = () => {
         
         user.find()
         .then(response => {
-            console.log(response)
             response.forEach(element => {
                 let newUserid = new userid({
                     userId: element['username']
