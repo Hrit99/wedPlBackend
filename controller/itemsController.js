@@ -43,7 +43,7 @@ function storeItem(item,res,name, mediaUrl, details){
     .catch(
         error => {
             res.json({
-                message: 'an error occured'
+                stored: false
             })
         }
     )
