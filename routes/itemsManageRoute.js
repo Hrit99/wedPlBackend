@@ -14,31 +14,17 @@ router.post('/', (req, res) => {
 router.post('/storeItem', (req, res) => {
     console.log(req.body.category)
     console.log(req.body.subcategory)
-    imgur
-  .uploadFile(req.body.path)
-  .then((json) => {
-    itemsController.storeItem(itemModel(req),res, req.body.name, json.link, req.body.details)
-  })
-  .catch((err) => {
-    console.error(err.message);
-  });
+ 
+    itemsController.storeItem(itemModel(req),res, req.body.name, req.body.link, req.body.details)
     
 })
 
 router.post('/updateItem', (req, res) => {
-    imgur
-    .uploadFile(req.body.path)
-    .then((json) => {
-      console.log(json.link)
-      itemsController.updateItem(itemModel(req),res, req.body._id, req.body.name, json.link, req.body.details)
+   
+      itemsController.updateItem(itemModel(req),res, req.body._id, req.body.name, req.body.link, req.body.details)
       // res.json({
       //   link: json.link
       // })
-    }).catch((err) => {
-      res.json({
-        link: err.message
-      })
-    });
    
 })
 

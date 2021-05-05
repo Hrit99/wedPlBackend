@@ -7,6 +7,8 @@ const categoryRoute = require('./routes/CategoryRotes')
 const itemsRoute = require('./routes/itemsManageRoute').router
 const useridRoute = require('./routes/UseridRoutes')
 const adminRoute = require('./routes/AdminRoute')
+let os = require('os')
+console.log(os.userInfo());
 
 mongoose.connect('mongodb+srv://hritik:hritikpassword@cluster0.ibo9z.mongodb.net/users?retryWrites=true&w=majority', {useNewUrlParser:true, useUnifiedTopology:true})
 
