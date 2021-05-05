@@ -1,5 +1,6 @@
 var qs = require('querystring');
-const reloadc = require('./UseridController')
+const reloadc = require('./UseridController');
+const { truncate } = require('fs');
 function showItem(item,res){
     var val
     
@@ -62,12 +63,12 @@ function updateItem(item, res, _id, name, mediaUrl, details){
     .then(() => {
         reloadc.loadUserIds()
         res.json({
-            link: mediaUrl
+            updated: true
         })
     })
     .catch(error => {
         res.json({
-            link: mediaUrl
+            updated: false
         })
     })
 }
