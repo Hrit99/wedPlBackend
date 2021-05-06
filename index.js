@@ -6,6 +6,7 @@ const userRoute = require('./routes/UserRoute')
 const categoryRoute = require('./routes/CategoryRotes')
 const itemsRoute = require('./routes/itemsManageRoute').router
 const useridRoute = require('./routes/UseridRoutes')
+const adminidRoute = require('./routes/AdminidRoutes')
 const adminRoute = require('./routes/AdminRoute')
 let os = require('os')
 console.log(os.userInfo());
@@ -40,6 +41,7 @@ app.use('/api/user', userRoute)
 app.use('/api/category', categoryRoute)
 app.use('/api/item', itemsRoute)
 app.use('/api/userid', useridRoute)
+app.use('/api/adminid', adminidRoute)
 app.use('/api/admin', adminRoute)
 
 

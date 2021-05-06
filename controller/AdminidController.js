@@ -1,16 +1,17 @@
 
-const userid = require('../model/UserId')
-const user = require('../model/User')
+const adminid = require('../model/Adminid')
+const admin = require('../model/Admin')
+
 const loadUserIds = () => {
-    userid.deleteMany({}).then(() => {
+    adminid.deleteMany({}).then(() => {
         
-        user.find()
+        admin.find()
         .then(response => {
             response.forEach(element => {
-                let newUserid = new userid({
-                    userId: element['username']
+                let newAdminid = new adminid({
+                    adminId: element['username']
                 });
-                newUserid.save().then( () => {
+                newAdminid.save().then( () => {
                     console.log("saved" + element['username'])
                 }
                 ).catch(
@@ -35,8 +36,8 @@ const loadUserIds = () => {
 
 const reloadCheck = (req, res, next) => {
 
-    userid.findOneAndRemove({userId : req.body.userId}).then((response) => {
-        console.log(response['userId']);
+    adminid.findOneAndRemove({adminId : req.body.adminId}).then((response) => {
+        console.log(response['adminId']);
         res.json({
             reload: true
         })

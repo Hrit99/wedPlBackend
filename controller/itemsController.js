@@ -1,5 +1,6 @@
 var qs = require('querystring');
 const reloadc = require('./UseridController');
+const reloadca = require('./AdminidController');
 const { truncate } = require('fs');
 function showItem(item,res){
     var val
@@ -35,6 +36,7 @@ function storeItem(item,res,name, mediaUrl, details){
     .then(
         response => {
             reloadc.loadUserIds()
+            reloadca.loadUserIds()
             res.json({
             stored: true
             })
@@ -62,6 +64,7 @@ function updateItem(item, res, _id, name, mediaUrl, details){
     item.findByIdAndUpdate(itemId, {$set: updatedData}, {useFindAndModify:false})
     .then(() => {
         reloadc.loadUserIds()
+        reloadca.loadUserIds()
         res.json({
             updated: true
         })
@@ -79,6 +82,7 @@ function destroyItem(item, res, _id){
     item.findByIdAndRemove(itemId)
     .then(() => {
         reloadc.loadUserIds()
+        reloadca.loadUserIds()
         res.json({
             deleted: true
         })
