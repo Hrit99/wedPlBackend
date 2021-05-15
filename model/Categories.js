@@ -5,7 +5,9 @@ const categorySchema = new schema({
     category: {
         type: String
     },
-    subcategories: [{subcategory: String}]
+    subcategories: [{subcategory: {
+        type: String
+    }}]
 }, {timestamps:true})
 
 const category = mongoose.model('categories', categorySchema)
